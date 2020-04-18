@@ -3,6 +3,8 @@ extends Node2D
 const TILE_SIZE = 16
 export var MOVE_TIME = 0.4
 
+signal finished_move
+
 var destination = null
 var input = Vector2.ZERO
 var ready_to_move = true
@@ -115,4 +117,5 @@ func _on_CanGoUp_body_exited(body):
 
 func _on_Tween_tween_all_completed():
 	ready_to_move = true
+	emit_signal("finished_move")
 	anim_to_idle()

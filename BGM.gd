@@ -11,4 +11,5 @@ func play(track):
 		child.stop()
 	match track:
 		"Relax":
+			$BGMRelax.stream.set_loop_begin(1130496)
 			$BGMRelax.play()

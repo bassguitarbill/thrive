@@ -4,6 +4,11 @@ var destination_map = 0
 var destination_coordinates = Vector2(0, 0)
 var p_anim
 
+var game_state = {
+	'flower_health': 1000,
+	
+}
+
 signal level_change_complete
 
 onready var ScreenTransition = $ScreenTransition
@@ -43,9 +48,14 @@ func _on_ScreenTransition_fade_out_finished():
 	next_level.connect("go_to_map", self, "_on_Level_go_to_map")
 	$Level/YSort/Gardener.position = destination_coordinates
 	$Level/YSort/Gardener/AnimationPlayer.play(p_anim)
+	$Level/YSort/Gardener.connect('finished_move', self, '_on_Gardener_move')
 	emit_signal("level_change_complete", destination_map)
 	print('level change complete')
 
 
 func _on_TitleScreen_begin_game():
 	_on_Level_go_to_map(0, 72, 88, "IdleDown")
+	
+func _on_Gardener_move():
+	print('moved!')
+	pass
