@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 16
-export var TWEEN_DURATION = 0.8
+export var MOVE_TIME = 0.6
 
 var destination = null
 var input = Vector2.ZERO
@@ -18,6 +18,9 @@ onready var tween = $Tween
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 onready var bump_sound = $AudioStreamPlayer
+
+func _ready():
+	animationPlayer.playback_speed = 0.8 / MOVE_TIME
 
 func _process(delta):
 	if ready_to_move:
@@ -71,7 +74,7 @@ func start_move():
 		"position",
 		position,
 		destination,
-		TWEEN_DURATION,
+		MOVE_TIME,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
