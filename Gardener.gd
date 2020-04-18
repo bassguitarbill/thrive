@@ -17,6 +17,7 @@ var can_move = {
 onready var tween = $Tween
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
+onready var bump_sound = $AudioStreamPlayer
 
 func _process(delta):
 	if ready_to_move:
@@ -27,26 +28,43 @@ func _process(delta):
 func get_input():
 	input = Vector2.ZERO
 	
-	if (Input.is_action_pressed("ui_left") && can_move["left"] == 0):
-		input.x -= 1
-		animationPlayer.play("WalkLeft")
+	if (Input.is_action_pressed("ui_left")):
+		if can_move["left"] == 0:
+			animationPlayer.play("WalkLeft")
+			input.x -= 1
+		else:
+			animationPlayer.play("IdleLeft")
+			!bump_sound.playing && bump_sound.play()
 		return
-	if (Input.is_action_pressed("ui_right") && can_move["right"] == 0):
-		input.x += 1
-		animationPlayer.play("WalkRight")
+		
+	if (Input.is_action_pressed("ui_right")):
+		if can_move["right"] == 0:
+			animationPlayer.play("WalkRight")
+			input.x += 1
+		else:
+			animationPlayer.play("IdleRight")
+			!bump_sound.playing && bump_sound.play()
 		return
-	if (Input.is_action_pressed("ui_up") && can_move["up"] == 0):
-		input.y -= 1
-		animationPlayer.play("WalkUp")
+		
+	if (Input.is_action_pressed("ui_up")):
+		if can_move["up"] == 0:
+			animationPlayer.play("WalkUp")
+			input.y -= 1
+		else:
+			animationPlayer.play("IdleUp")
+			!bump_sound.playing && bump_sound.play()
 		return
-	if (Input.is_action_pressed("ui_down") && can_move["down"] == 0):
-		input.y += 1
-		animationPlayer.play("WalkDown")
+	if (Input.is_action_pressed("ui_down")):
+		if can_move["down"] == 0:
+			animationPlayer.play("WalkDown")
+			input.y += 1
+		else:
+			animationPlayer.play("IdleDown")
+			!bump_sound.playing && bump_sound.play()
 		return
 		
 func start_move():
 	var collision_position = input * TILE_SIZE
-	#$Area2D.position = collision_position
 	destination = (input * TILE_SIZE) + position
 	tween.interpolate_property(
 		self,
@@ -93,5 +111,4 @@ func _on_CanGoUp_body_exited(body):
 
 func _on_Tween_tween_all_completed():
 	ready_to_move = true
-	print(can_move)
 	anim_to_idle()
