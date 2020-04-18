@@ -115,5 +115,4 @@ func _on_CanGoUp_body_exited(body):
 
 func _on_Tween_tween_all_completed():
 	ready_to_move = true
-	print(position)
 	anim_to_idle()

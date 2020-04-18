@@ -1,24 +1,20 @@
 extends Node2D
 
+signal begin_game
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
+var going_to_game = false
 func _ready():
-	$AnimationPlayer.play("SplashScreens")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+	$AnimationPlayer.play("LD46")
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept") && !going_to_game:
+		going_to_game = true
+		emit_signal("begin_game")
+	
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print(anim_name)
 	match anim_name:
+		"LD46":
+			$AnimationPlayer.play("SplashScreens")
 		"SplashScreens":
 			$AnimationPlayer.play("Logo")
 		"Logo":

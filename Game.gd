@@ -18,16 +18,25 @@ func _on_Level_go_to_map(map_number, x, y, player_anim):
 	ScreenTransition.start_fade_out()
 
 func _on_ScreenTransition_fade_out_finished():
-	var old_level = $Level
-	remove_child(old_level)
-	old_level.call_deferred("free")
+	
+	if has_node("Level"):
+		var old_level = $Level
+		remove_child(old_level)
+		old_level.call_deferred("free")
+	
+	if has_node("TitleScreen"):
+		var title_screen = $TitleScreen
+		remove_child(title_screen)
+		title_screen.call_deferred("free")
 	
 	var next_level_resource
 	match destination_map:
 		0:
 			next_level_resource = load("res://Home.tscn")
+			$BGM.play("Relax")
 		1:
 			next_level_resource = load("res://Level1.tscn")
+			$BGM.play("Relax")
 	var next_level = next_level_resource.instance()
 	next_level.name = 'Level'
 	add_child_below_node($Top, next_level)
@@ -36,3 +45,7 @@ func _on_ScreenTransition_fade_out_finished():
 	$Level/YSort/Gardener/AnimationPlayer.play(p_anim)
 	emit_signal("level_change_complete", destination_map)
 	print('level change complete')
+
+
+func _on_TitleScreen_begin_game():
+	_on_Level_go_to_map(0, 72, 88, "IdleDown")

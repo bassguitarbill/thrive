@@ -1,13 +1,11 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Dirt3.png" type="Texture" id=1]
 [ext_resource path="res://Flower.png" type="Texture" id=2]
 [ext_resource path="res://Gardener.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects.png" type="Texture" id=4]
 [ext_resource path="res://BlueWall.png" type="Texture" id=5]
-[ext_resource path="res://Relax.wav" type="AudioStream" id=6]
 [ext_resource path="res://Home.gd" type="Script" id=7]
-[ext_resource path="res://BGMRelax.gd" type="Script" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -435,16 +433,10 @@ collision_layer = 2
 format = 1
 tile_data = PoolIntArray( 11, 0, 5, 13, 0, 5, 65536, 0, 65541, 65537, 0, 65537, 65538, 0, 65539, 65539, 0, 65539, 65540, 0, 65539, 65541, 0, 65539, 65542, 0, 65538, 65543, 0, 65537, 65544, 0, 65539, 65545, 0, 65539, 65546, 0, 65538, 65547, 0, 4, 65549, 0, 6, 65550, 0, 65537, 65551, 0, 65539, 65552, 0, 65539, 65553, 0, 65538, 131072, 0, 6, 131073, 0, 131073, 131074, 0, 131075, 131075, 0, 131075, 131076, 0, 131075, 131077, 0, 131075, 131078, 0, 131074, 131079, 0, 131073, 131080, 0, 131075, 131081, 0, 131075, 131082, 0, 131074, 131083, 0, 0, 131085, 0, 4, 131086, 0, 131073, 131087, 0, 131075, 131088, 0, 131075, 131089, 0, 131074, 131090, 0, 5, 196608, 0, 6, 196626, 0, 6, 262144, 0, 6, 262146, 0, 65541, 262162, 0, 6, 327680, 0, 65540, 327682, 0, 65540, 327698, 0, 6, 393216, 0, 131072, 393218, 0, 131072, 393234, 0, 4, 458770, 0, 0, 524288, 0, 65541, 524305, 0, 1, 524306, 0, 3, 524307, 0, 2, 589824, 0, 6, 655360, 0, 6, 655377, 0, 1, 655378, 0, 3, 655379, 0, 2, 720896, 0, 6, 720913, 0, 5, 786432, 0, 6, 786449, 0, 4, 851968, 0, 65540, 851969, 0, 1, 851970, 0, 3, 851971, 0, 3, 851972, 0, 3, 851973, 0, 3, 851974, 0, 3, 851975, 0, 3, 851976, 0, 3, 851977, 0, 2, 851979, 0, 1, 851980, 0, 3, 851981, 0, 3, 851982, 0, 3, 851983, 0, 3, 851984, 0, 3, 851985, 0, 2, 917504, 0, 131072, 917513, 0, 0, 917515, 0, 0 )
 
-[node name="BGMRelax" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -80.0
-script = ExtResource( 8 )
-
 [node name="ToLevel1" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToLevel1"]
 position = Vector2( 319.665, 152.466 )
 shape = SubResource( 39 )
-[connection signal="finished" from="BGMRelax" to="BGMRelax" method="_on_BGMRelax_finished"]
 [connection signal="body_entered" from="ToLevel1" to="." method="_on_ToLevel1_body_entered"]
