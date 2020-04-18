@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$BGMRelax.play()
+	$AnimationPlayer.play("SplashScreens")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +16,10 @@ func _ready():
 #	pass
 
 
-func _on_BGMRelax_finished():
-	$BGMRelax.play(25.634807)
-	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	print(anim_name)
+	match anim_name:
+		"SplashScreens":
+			$AnimationPlayer.play("Logo")
+		"Logo":
+			$AnimationPlayer.play("Dance")

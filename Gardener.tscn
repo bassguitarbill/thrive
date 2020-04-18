@@ -143,8 +143,8 @@ extents = Vector2( 7.56691, 7.51477 )
 extents = Vector2( 7.22261, 7.16402 )
 
 [node name="Gardener" type="KinematicBody2D"]
+collision_mask = 4
 script = ExtResource( 2 )
-MOVE_TIME = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.352531, -13.849 )
@@ -162,28 +162,36 @@ anims/WalkLeft = SubResource( 6 )
 anims/WalkRight = SubResource( 7 )
 anims/WalkUp = SubResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 9 )
 
 [node name="CanGoUp" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanGoUp"]
 position = Vector2( 0.0216537, -15.5007 )
 shape = SubResource( 10 )
 
 [node name="CanGoDown" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanGoDown"]
 position = Vector2( 0.0216537, 15.4478 )
 shape = SubResource( 10 )
 
 [node name="CanGoLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanGoLeft"]
 position = Vector2( -15.2202, 0.146361 )
 shape = SubResource( 10 )
 
 [node name="CanGoRight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanGoRight"]
 position = Vector2( 15.1732, -0.12865 )

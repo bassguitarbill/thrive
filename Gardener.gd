@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 16
-export var MOVE_TIME = 0.6
+export var MOVE_TIME = 0.4
 
 var destination = null
 var input = Vector2.ZERO
@@ -41,6 +41,7 @@ func get_input():
 		return
 		
 	if (Input.is_action_pressed("ui_right")):
+
 		if can_move["right"] == 0:
 			animationPlayer.play("WalkRight")
 			input.x += 1
@@ -114,4 +115,5 @@ func _on_CanGoUp_body_exited(body):
 
 func _on_Tween_tween_all_completed():
 	ready_to_move = true
+	print(position)
 	anim_to_idle()
