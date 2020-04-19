@@ -145,6 +145,7 @@ extents = Vector2( 7.22261, 7.16402 )
 [node name="Gardener" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 2 )
+MOVE_TIME = 0.6
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.352531, -13.849 )
@@ -197,6 +198,13 @@ collision_mask = 2
 position = Vector2( 15.1732, -0.12865 )
 shape = SubResource( 10 )
 
+[node name="CanInteract" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanInteract"]
+shape = SubResource( 10 )
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -209,4 +217,6 @@ stream = ExtResource( 3 )
 [connection signal="body_exited" from="CanGoLeft" to="." method="_on_CanGoLeft_body_exited"]
 [connection signal="body_entered" from="CanGoRight" to="." method="_on_CanGoRight_body_entered"]
 [connection signal="body_exited" from="CanGoRight" to="." method="_on_CanGoRight_body_exited"]
+[connection signal="area_entered" from="CanInteract" to="." method="_on_CanInteract_area_entered"]
+[connection signal="area_exited" from="CanInteract" to="." method="_on_CanInteract_area_exited"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

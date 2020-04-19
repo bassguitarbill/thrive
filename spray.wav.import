@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spray.wav-734e4db8d5fdd10e75110648f0d02019.sample"
+
+[deps]
+
+source_file="res://spray.wav"
+dest_files=[ "res://.import/spray.wav-734e4db8d5fdd10e75110648f0d02019.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

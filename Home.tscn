@@ -1,11 +1,14 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Dirt3.png" type="Texture" id=1]
 [ext_resource path="res://Flower.png" type="Texture" id=2]
 [ext_resource path="res://Gardener.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects.png" type="Texture" id=4]
 [ext_resource path="res://BlueWall.png" type="Texture" id=5]
+[ext_resource path="res://Faucet.gd" type="Script" id=6]
 [ext_resource path="res://Home.gd" type="Script" id=7]
+[ext_resource path="res://spray.wav" type="AudioStream" id=8]
+[ext_resource path="res://Flower.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -386,6 +389,8 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=40]
+
 [sub_resource type="RectangleShape2D" id=39]
 
 [node name="Home" type="Node2D"]
@@ -419,19 +424,30 @@ tile_data = PoolIntArray( 131088, 0, 327680, 196618, 0, 5, 196624, 0, 393216, 26
 [node name="Gardener" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 72, 88 )
 
-[node name="Flower" type="Sprite" parent="YSort"]
-position = Vector2( 269.66, 89.5714 )
-texture = ExtResource( 2 )
-vframes = 3
-hframes = 5
-frame = 14
+[node name="Flower" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 271.5, 89.5 )
 
 [node name="Walls" type="TileMap" parent="YSort"]
 tile_set = SubResource( 38 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 11, 0, 5, 13, 0, 5, 65536, 0, 65541, 65537, 0, 65537, 65538, 0, 65539, 65539, 0, 65539, 65540, 0, 65539, 65541, 0, 65539, 65542, 0, 65538, 65543, 0, 65537, 65544, 0, 65539, 65545, 0, 65539, 65546, 0, 65538, 65547, 0, 4, 65549, 0, 6, 65550, 0, 65537, 65551, 0, 65539, 65552, 0, 65539, 65553, 0, 65538, 131072, 0, 6, 131073, 0, 131073, 131074, 0, 131075, 131075, 0, 131075, 131076, 0, 131075, 131077, 0, 131075, 131078, 0, 131074, 131079, 0, 131073, 131080, 0, 131075, 131081, 0, 131075, 131082, 0, 131074, 131083, 0, 0, 131085, 0, 4, 131086, 0, 131073, 131087, 0, 131075, 131088, 0, 131075, 131089, 0, 131074, 131090, 0, 5, 196608, 0, 6, 196626, 0, 6, 262144, 0, 6, 262162, 0, 6, 327680, 0, 65540, 327698, 0, 6, 393216, 0, 131072, 393234, 0, 4, 458770, 0, 0, 524288, 0, 65541, 524305, 0, 1, 524306, 0, 3, 524307, 0, 2, 589824, 0, 6, 655360, 0, 6, 655377, 0, 1, 655378, 0, 3, 655379, 0, 2, 720896, 0, 65540, 720913, 0, 4, 786432, 0, 131072, 786433, 0, 1, 786434, 0, 3, 786435, 0, 3, 786436, 0, 3, 786437, 0, 3, 786438, 0, 3, 786439, 0, 3, 786440, 0, 3, 786441, 0, 3, 786442, 0, 3, 786443, 0, 3, 786444, 0, 3, 786445, 0, 3, 786446, 0, 3, 786447, 0, 3, 786448, 0, 3, 786449, 0, 2 )
+tile_data = PoolIntArray( 11, 0, 5, 13, 0, 5, 65536, 0, 65541, 65537, 0, 65537, 65538, 0, 65539, 65539, 0, 65539, 65540, 0, 65539, 65541, 0, 65539, 65542, 0, 65538, 65543, 0, 65537, 65544, 0, 65539, 65545, 0, 65539, 65546, 0, 65538, 65547, 0, 4, 65548, 0, 0, 65549, 0, 6, 65550, 0, 65537, 65551, 0, 65539, 65552, 0, 65539, 65553, 0, 65538, 131072, 0, 6, 131073, 0, 131073, 131074, 0, 131075, 131075, 0, 131075, 131076, 0, 131075, 131077, 0, 131075, 131078, 0, 131074, 131079, 0, 131073, 131080, 0, 131075, 131081, 0, 131075, 131082, 0, 131074, 131083, 0, 0, 131085, 0, 4, 131086, 0, 131073, 131087, 0, 131075, 131088, 0, 131075, 131089, 0, 131074, 131090, 0, 5, 196608, 0, 6, 196626, 0, 6, 262144, 0, 6, 262162, 0, 6, 327680, 0, 65540, 327698, 0, 6, 393216, 0, 131072, 393234, 0, 4, 458752, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 524288, 0, 65541, 524305, 0, 1, 524306, 0, 3, 524307, 0, 2, 589824, 0, 6, 655360, 0, 6, 655377, 0, 1, 655378, 0, 3, 655379, 0, 2, 720896, 0, 65540, 720913, 0, 4, 786432, 0, 131072, 786433, 0, 1, 786434, 0, 3, 786435, 0, 3, 786436, 0, 3, 786437, 0, 3, 786438, 0, 3, 786439, 0, 3, 786440, 0, 3, 786441, 0, 3, 786442, 0, 3, 786443, 0, 3, 786444, 0, 3, 786445, 0, 3, 786446, 0, 3, 786447, 0, 3, 786448, 0, 3, 786449, 0, 2 )
+
+[node name="Faucet" type="Area2D" parent="."]
+position = Vector2( 152, 88 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Faucet"]
+position = Vector2( 112.259, -52.4404 )
+shape = SubResource( 40 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Faucet"]
+stream = ExtResource( 8 )
+volume_db = -8.0
+pitch_scale = 0.9
 
 [node name="ToLevel1" type="Area2D" parent="."]
 collision_layer = 4
@@ -439,4 +455,7 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToLevel1"]
 position = Vector2( 319.665, 152.466 )
 shape = SubResource( 39 )
+[connection signal="flower_grown" from="YSort/Flower" to="." method="_on_Flower_flower_grown"]
+[connection signal="fill_flower_health" from="Faucet" to="." method="_on_Faucet_fill_flower_health"]
+[connection signal="finished" from="Faucet/AudioStreamPlayer" to="Faucet" method="_on_AudioStreamPlayer_finished"]
 [connection signal="body_entered" from="ToLevel1" to="." method="_on_ToLevel1_body_entered"]

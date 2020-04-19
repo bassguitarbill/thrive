@@ -4,6 +4,7 @@ const TILE_SIZE = 16
 export var MOVE_TIME = 0.4
 
 signal finished_move
+signal interact
 
 var destination = null
 var input = Vector2.ZERO
@@ -15,6 +16,7 @@ var can_move = {
 	"up": 0,
 	"down": 0
 }
+var can_interact = 0
 
 onready var tween = $Tween
 onready var animationPlayer = $AnimationPlayer
@@ -32,8 +34,13 @@ func _process(delta):
 		
 func get_input():
 	input = Vector2.ZERO
+	if (Input.is_action_pressed("ui_accept") && can_interact > 0):
+		emit_signal("interact")
+		ready_to_move = false
+		return
 	
 	if (Input.is_action_pressed("ui_left")):
+		$CanInteract/CollisionShape2D.position = $CanGoLeft/CollisionShape2D.position
 		if can_move["left"] == 0:
 			animationPlayer.play("WalkLeft")
 			input.x -= 1
@@ -43,7 +50,7 @@ func get_input():
 		return
 		
 	if (Input.is_action_pressed("ui_right")):
-
+		$CanInteract/CollisionShape2D.position = $CanGoRight/CollisionShape2D.position
 		if can_move["right"] == 0:
 			animationPlayer.play("WalkRight")
 			input.x += 1
@@ -53,6 +60,7 @@ func get_input():
 		return
 		
 	if (Input.is_action_pressed("ui_up")):
+		$CanInteract/CollisionShape2D.position = $CanGoUp/CollisionShape2D.position
 		if can_move["up"] == 0:
 			animationPlayer.play("WalkUp")
 			input.y -= 1
@@ -61,6 +69,7 @@ func get_input():
 			!bump_sound.playing && bump_sound.play()
 		return
 	if (Input.is_action_pressed("ui_down")):
+		$CanInteract/CollisionShape2D.position = $CanGoDown/CollisionShape2D.position
 		if can_move["down"] == 0:
 			animationPlayer.play("WalkDown")
 			input.y += 1
@@ -84,6 +93,9 @@ func start_move():
 	tween.start()
 	ready_to_move = false
 
+func interaction_finished():
+	ready_to_move = true
+
 func anim_to_idle():
 	animationPlayer.stop(true)
 	#match (input):
@@ -91,28 +103,28 @@ func anim_to_idle():
 	#	Vector2(-1, 0):
 			
 
-func _on_CanGoRight_body_entered(body):
+func _on_CanGoRight_body_entered(_body):
 	can_move["right"] += 1
 
-func _on_CanGoLeft_body_entered(body):
+func _on_CanGoLeft_body_entered(_body):
 	can_move["left"] += 1
 
-func _on_CanGoDown_body_entered(body):
+func _on_CanGoDown_body_entered(_body):
 	can_move["down"] += 1
 	
-func _on_CanGoUp_body_entered(body):
+func _on_CanGoUp_body_entered(_body):
 	can_move["up"] += 1
 
-func _on_CanGoRight_body_exited(body):
+func _on_CanGoRight_body_exited(_body):
 	can_move["right"] -= 1
 
-func _on_CanGoLeft_body_exited(body):
+func _on_CanGoLeft_body_exited(_body):
 	can_move["left"] -= 1
 	
-func _on_CanGoDown_body_exited(body):
+func _on_CanGoDown_body_exited(_body):
 	can_move["down"] -= 1
 
-func _on_CanGoUp_body_exited(body):
+func _on_CanGoUp_body_exited(_body):
 	can_move["up"] -= 1
 
 func _on_Tween_tween_all_completed():
@@ -121,3 +133,17 @@ func _on_Tween_tween_all_completed():
 
 func allow_to_move():
 	ready_to_move = true
+
+func _on_CanInteract_area_entered(area):
+	connect("interact", area, "interact")
+	area.connect("interaction_finished", self, "interaction_finished")
+	can_interact += 1
+
+func _on_CanInteract_area_exited(area):
+	disconnect("interact", area, "interact")
+	area.disconnect("interaction_finished", self, "interaction_finished")
+	can_interact -= 1
+
+
+func _on_Table_interaction_finished():
+	allow_to_move()
