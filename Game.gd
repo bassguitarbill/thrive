@@ -6,10 +6,13 @@ var p_anim
 
 var game_state = {
 	'flower_health': 1000,
-	
+	'game_over': false,
 }
 
 signal level_change_complete
+signal set_flower_health
+signal player_is_allowed_to_move
+signal game_over
 
 onready var ScreenTransition = $ScreenTransition
 
@@ -23,6 +26,9 @@ func _on_Level_go_to_map(map_number, x, y, player_anim):
 	ScreenTransition.start_fade_out()
 
 func _on_ScreenTransition_fade_out_finished():
+	if game_state['game_over']:
+		game_over()
+		return
 	
 	if has_node("Level"):
 		var old_level = $Level
@@ -46,16 +52,35 @@ func _on_ScreenTransition_fade_out_finished():
 	next_level.name = 'Level'
 	add_child_below_node($Top, next_level)
 	next_level.connect("go_to_map", self, "_on_Level_go_to_map")
-	$Level/YSort/Gardener.position = destination_coordinates
-	$Level/YSort/Gardener/AnimationPlayer.play(p_anim)
-	$Level/YSort/Gardener.connect('finished_move', self, '_on_Gardener_move')
-	emit_signal("level_change_complete", destination_map)
-	print('level change complete')
+	
+	var gardener = get_node('Level/YSort/Gardener')
+	gardener.position = destination_coordinates
+	gardener.get_node('AnimationPlayer').play(p_anim)
+	gardener.connect('finished_move', self, '_on_Gardener_move')
+	connect("player_is_allowed_to_move", gardener, "allow_to_move")
 
+	$HUD.visible = true
+	emit_signal("level_change_complete", destination_map)
 
 func _on_TitleScreen_begin_game():
 	_on_Level_go_to_map(0, 72, 88, "IdleDown")
 	
 func _on_Gardener_move():
-	print('moved!')
-	pass
+	game_state['flower_health'] -= 100
+	emit_signal("set_flower_health", game_state['flower_health'])
+	if game_state['flower_health'] <= 0:
+		game_state['game_over'] = true
+		emit_signal("game_over")
+		ScreenTransition.start_fade_out()
+		$BGM.play('Game Over')
+	else:
+		emit_signal("player_is_allowed_to_move")
+	
+func game_over():
+	$AnimationPlayer.play("GameOver")
+	var old_level = $Level
+	remove_child(old_level)
+	old_level.call_deferred("free")
+
+func _on_BGMGameOver_finished():
+	get_tree().reload_current_scene()

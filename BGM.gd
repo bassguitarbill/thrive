@@ -13,3 +13,5 @@ func play(track):
 		"Relax":
 			$BGMRelax.stream.set_loop_begin(1130496)
 			$BGMRelax.play()
+		"Game Over":
+			$BGMGameOver.play()

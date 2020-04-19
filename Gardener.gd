@@ -116,6 +116,8 @@ func _on_CanGoUp_body_exited(body):
 	can_move["up"] -= 1
 
 func _on_Tween_tween_all_completed():
-	ready_to_move = true
 	emit_signal("finished_move")
 	anim_to_idle()
+
+func allow_to_move():
+	ready_to_move = true
