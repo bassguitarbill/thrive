@@ -4,9 +4,6 @@
 [ext_resource path="res://Gardener.gd" type="Script" id=2]
 [ext_resource path="res://Audio/SFX/bump.wav" type="AudioStream" id=3]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "IdleDown"
 length = 0.2
@@ -148,7 +145,7 @@ extents = Vector2( 7.22261, 7.16402 )
 [node name="Gardener" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 2 )
-MOVE_TIME = 0.6
+MOVE_TIME = 0.2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.352531, -13.849 )

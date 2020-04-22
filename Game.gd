@@ -17,14 +17,13 @@ signal game_over
 
 onready var ScreenTransition = $ScreenTransition
 
-func _ready():
-	pass # Replace with function body.
+func _on_go_to_map(map_number, x, y, player_anim):
+	destination_map = map_number
+	destination_coordinates = Vector2(x, y)
+	p_anim = player_anim
+	ScreenTransition.start_fade_out()
 
-func _on_Level_go_to_map(map_number, x, y, player_anim):
-	if (map_number != -1):
-		destination_map = map_number
-		destination_coordinates = Vector2(x, y)
-		p_anim = player_anim
+func _on_reset_map():
 	ScreenTransition.start_fade_out()
 
 func _on_ScreenTransition_fade_out_finished():
@@ -53,27 +52,33 @@ func _on_ScreenTransition_fade_out_finished():
 		2:
 			next_level_resource = load("res://Level2.tscn")
 			$BGM.play("Relax")
-	var next_level = next_level_resource.instance()
+	var next_level : Level = next_level_resource.instance()
 	next_level.name = 'Level'
 	add_child(next_level)
 	move_child(next_level, 0)
-	next_level.connect("go_to_map", self, "_on_Level_go_to_map")
+	next_level.connect("go_to_map", self, "_on_go_to_map")
+	next_level.connect("reset_map", self, "_on_reset_map")
+	next_level.connect('fill_flower_health', self, 'fill_flower_health')
+	next_level.connect('flower_grown', self, 'flower_grown')
+	next_level.connect('update_game_state', self, '_on_update_game_state')
 	
-	var gardener = get_node('Level/YSort/Gardener')
+	var gardener = next_level.gardener
 	gardener.position = destination_coordinates
 	gardener.get_node('AnimationPlayer').play(p_anim)
 	gardener.connect('finished_move', self, '_on_Gardener_move')
-	$Level.connect('fill_flower_health', self, 'fill_flower_health')
-	$Level.connect('flower_grown', self, 'flower_grown')
-	$Level.connect('get_plant_food', self, 'get_plant_food')
+	
+	
 	connect("player_is_allowed_to_move", gardener, "allow_to_move")
 	$Level.load_game_state(game_state)
 
 	$HUD.visible = true
 	emit_signal("level_change_complete", destination_map)
 
+func _on_update_game_state(name, value):
+	game_state[name] = value
+
 func _on_TitleScreen_begin_game():
-	_on_Level_go_to_map(0, 72, 88, "IdleDown")
+	_on_go_to_map(0, 72, 88, "IdleDown")
 	
 func _on_Gardener_move():
 	game_state['flower_health'] -= 6.5

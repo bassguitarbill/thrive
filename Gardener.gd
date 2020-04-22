@@ -98,10 +98,6 @@ func interaction_finished():
 
 func anim_to_idle():
 	animationPlayer.stop(true)
-	#match (input):
-	
-	#	Vector2(-1, 0):
-			
 
 func _on_CanGoRight_body_entered(_body):
 	can_move["right"] += 1

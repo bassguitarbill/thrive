@@ -10,9 +10,6 @@
 [ext_resource path="res://BGMRelax.gd" type="Script" id=8]
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=9]
 
-
-
-
 [sub_resource type="TileSet" id=1]
 0/name = "Dirt3.png 0"
 0/texture = ExtResource( 1 )
