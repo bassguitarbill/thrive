@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/YouWin.png-dddaff82aff9d2942ae54347a04a9e5e.stex"
+path="res://.import/Flower.png-265ff1b3e2e489c1740edeaa5aba4a1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://YouWin.png"
-dest_files=[ "res://.import/YouWin.png-dddaff82aff9d2942ae54347a04a9e5e.stex" ]
+source_file="res://Images/Flower.png"
+dest_files=[ "res://.import/Flower.png-265ff1b3e2e489c1740edeaa5aba4a1d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

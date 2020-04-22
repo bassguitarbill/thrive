@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Table.png-0623e58f89f6aa3bb92b044c7be20fde.stex"
+path="res://.import/Sentry.png-adb0fd5a62d95da451cd483c65b700ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Table.png"
-dest_files=[ "res://.import/Table.png-0623e58f89f6aa3bb92b044c7be20fde.stex" ]
+source_file="res://Images/Sentry.png"
+dest_files=[ "res://.import/Sentry.png-adb0fd5a62d95da451cd483c65b700ef.stex" ]
 
 [params]
 

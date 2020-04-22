@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlowerDance-Sheet.png-69e853f5746a5be4612b884943e7da50.stex"
+path="res://.import/BlueWall.png-28d5a8943c18f0979a21ddef0953b784.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FlowerDance-Sheet.png"
-dest_files=[ "res://.import/FlowerDance-Sheet.png-69e853f5746a5be4612b884943e7da50.stex" ]
+source_file="res://Images/BlueWall.png"
+dest_files=[ "res://.import/BlueWall.png-28d5a8943c18f0979a21ddef0953b784.stex" ]
 
 [params]
 

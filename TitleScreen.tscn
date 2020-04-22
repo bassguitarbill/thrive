@@ -1,13 +1,16 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Logo-Sheet.png" type="Texture" id=1]
-[ext_resource path="res://bassguitarbill.png" type="Texture" id=2]
-[ext_resource path="res://Avatar.png" type="Texture" id=3]
-[ext_resource path="res://FlowerDance-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Images/Logo-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Images/bassguitarbill.png" type="Texture" id=2]
+[ext_resource path="res://Images/Avatar.png" type="Texture" id=3]
+[ext_resource path="res://Images/FlowerDance-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://TitleScreen.gd" type="Script" id=5]
 [ext_resource path="res://Audio/Music/Thrive.wav" type="AudioStream" id=6]
-[ext_resource path="res://PressEnter.png" type="Texture" id=7]
-[ext_resource path="res://ld46.png" type="Texture" id=8]
+[ext_resource path="res://Images/PressEnter.png" type="Texture" id=7]
+[ext_resource path="res://Images/ld46.png" type="Texture" id=8]
+
+
+
 
 
 

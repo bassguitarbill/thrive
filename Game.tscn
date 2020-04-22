@@ -7,8 +7,8 @@
 [ext_resource path="res://Audio/Music/Relax.wav" type="AudioStream" id=5]
 [ext_resource path="res://BGM.gd" type="Script" id=6]
 [ext_resource path="res://Audio/Music/GameOver.wav" type="AudioStream" id=7]
-[ext_resource path="res://GameOver.png" type="Texture" id=8]
-[ext_resource path="res://YouWin.png" type="Texture" id=9]
+[ext_resource path="res://Images/GameOver.png" type="Texture" id=8]
+[ext_resource path="res://Images/YouWin.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOver"

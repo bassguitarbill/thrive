@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PressEnter.png-a8a042a8ba850a0fbb80aa6a868f130a.stex"
+path="res://.import/Logo-Sheet.png-af83070e5ac30aaf81c5a213404d7bec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PressEnter.png"
-dest_files=[ "res://.import/PressEnter.png-a8a042a8ba850a0fbb80aa6a868f130a.stex" ]
+source_file="res://Images/Logo-Sheet.png"
+dest_files=[ "res://.import/Logo-Sheet.png-af83070e5ac30aaf81c5a213404d7bec.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

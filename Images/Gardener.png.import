@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlueWall.png-eb58854bd38b1ae6e85b1cff2625205e.stex"
+path="res://.import/Gardener.png-cdd5730bd5d103acef53b84bd5c696bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BlueWall.png"
-dest_files=[ "res://.import/BlueWall.png-eb58854bd38b1ae6e85b1cff2625205e.stex" ]
+source_file="res://Images/Gardener.png"
+dest_files=[ "res://.import/Gardener.png-cdd5730bd5d103acef53b84bd5c696bb.stex" ]
 
 [params]
 

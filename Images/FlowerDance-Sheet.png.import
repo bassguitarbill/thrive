@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GameOver.png-e80ff3825682d376b7da004cc0739585.stex"
+path="res://.import/FlowerDance-Sheet.png-01cd033b7a46a8a5785d545541f1db02.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameOver.png"
-dest_files=[ "res://.import/GameOver.png-e80ff3825682d376b7da004cc0739585.stex" ]
+source_file="res://Images/FlowerDance-Sheet.png"
+dest_files=[ "res://.import/FlowerDance-Sheet.png-01cd033b7a46a8a5785d545541f1db02.stex" ]
 
 [params]
 

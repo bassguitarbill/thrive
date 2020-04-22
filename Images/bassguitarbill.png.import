@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Avatar.png-eed449ee802cee214d50c70774ad7adc.stex"
+path="res://.import/bassguitarbill.png-dc4523a81e608137ea9eab8b226b4a59.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Avatar.png"
-dest_files=[ "res://.import/Avatar.png-eed449ee802cee214d50c70774ad7adc.stex" ]
+source_file="res://Images/bassguitarbill.png"
+dest_files=[ "res://.import/bassguitarbill.png-dc4523a81e608137ea9eab8b226b4a59.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

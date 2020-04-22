@@ -1,15 +1,16 @@
 [gd_scene load_steps=50 format=2]
 
-[ext_resource path="res://Dirt3.png" type="Texture" id=1]
-[ext_resource path="res://Flower.png" type="Texture" id=2]
+[ext_resource path="res://Images/Dirt3.png" type="Texture" id=1]
+[ext_resource path="res://Images/Flower.png" type="Texture" id=2]
 [ext_resource path="res://Gardener.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects.png" type="Texture" id=4]
-[ext_resource path="res://BlueWall.png" type="Texture" id=5]
-[ext_resource path="res://Table.png" type="Texture" id=6]
+[ext_resource path="res://Images/Objects.png" type="Texture" id=4]
+[ext_resource path="res://Images/BlueWall.png" type="Texture" id=5]
+[ext_resource path="res://Images/Table.png" type="Texture" id=6]
 [ext_resource path="res://Level2.gd" type="Script" id=7]
 [ext_resource path="res://Table.gd" type="Script" id=8]
 [ext_resource path="res://Audio/SFX/pickup.wav" type="AudioStream" id=9]
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=10]
+
 
 
 
