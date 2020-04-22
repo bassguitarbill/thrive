@@ -55,7 +55,8 @@ func _on_ScreenTransition_fade_out_finished():
 			$BGM.play("Relax")
 	var next_level = next_level_resource.instance()
 	next_level.name = 'Level'
-	add_child_below_node($Top, next_level)
+	add_child(next_level)
+	move_child(next_level, 0)
 	next_level.connect("go_to_map", self, "_on_Level_go_to_map")
 	
 	var gardener = get_node('Level/YSort/Gardener')
