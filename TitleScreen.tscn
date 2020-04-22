@@ -5,9 +5,11 @@
 [ext_resource path="res://Avatar.png" type="Texture" id=3]
 [ext_resource path="res://FlowerDance-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://TitleScreen.gd" type="Script" id=5]
-[ext_resource path="res://Thrive.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Music/Thrive.wav" type="AudioStream" id=6]
 [ext_resource path="res://PressEnter.png" type="Texture" id=7]
 [ext_resource path="res://ld46.png" type="Texture" id=8]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"

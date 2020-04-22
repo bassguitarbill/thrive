@@ -5,10 +5,12 @@
 [ext_resource path="res://Gardener.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects.png" type="Texture" id=4]
 [ext_resource path="res://BlueWall.png" type="Texture" id=5]
-[ext_resource path="res://Relax.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Music/Relax.wav" type="AudioStream" id=6]
 [ext_resource path="res://Level1.gd" type="Script" id=7]
 [ext_resource path="res://BGMRelax.gd" type="Script" id=8]
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=9]
+
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "Dirt3.png 0"

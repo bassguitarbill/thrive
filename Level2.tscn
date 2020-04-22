@@ -8,8 +8,10 @@
 [ext_resource path="res://Table.png" type="Texture" id=6]
 [ext_resource path="res://Level2.gd" type="Script" id=7]
 [ext_resource path="res://Table.gd" type="Script" id=8]
-[ext_resource path="res://pickup.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/SFX/pickup.wav" type="AudioStream" id=9]
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=10]
+
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "Dirt3.png 0"
