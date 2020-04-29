@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Thrive"
 run/main_scene="res://Game.tscn"
-config/icon="res://Images/Avatar.png"
+config/icon="res://icon.png"
 
 [display]
 
