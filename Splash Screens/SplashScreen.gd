@@ -14,7 +14,7 @@ func _ready():
 	player.connect("animation_finished", self, "on_animation_completed")
 
 func begin():
-	print(get_name(), 'begin')
+	print(get_name(), ' begin')
 	player.play("begin")
 	
 func fade_out():
@@ -29,4 +29,7 @@ func on_fadeout_completed(_dink, _donk):
 	emit_signal("finished")
 
 func on_animation_completed(_anim_name):
-	emit_signal("finished")
+	if player.has_animation("wait"):
+		player.play("wait")
+	else:
+		emit_signal("finished")

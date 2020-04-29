@@ -4,23 +4,20 @@ signal begin_game
 
 var going_to_game = false
 
-const SPLASH_SCREENS = [
-	"Splash-LD46",
-	"Splash-Avatar",
-	"Splash-Title",
-]
+var splash_screens
 var splash_screen_index = 0
 
 var current_splash_screen : SplashScreen
 
 func _ready():
+	splash_screens = $SplashScreens.get_children()
 	play_current_splash_screen()
 
 func play_current_splash_screen():
-	if splash_screen_index >= SPLASH_SCREENS.size():
+	if splash_screen_index >= splash_screens.size():
 		emit_signal("begin_game")
 		return
-	current_splash_screen = get_node(SPLASH_SCREENS[splash_screen_index])
+	current_splash_screen = splash_screens[splash_screen_index]
 	current_splash_screen.begin()
 	current_splash_screen.connect("finished", self, "_on_splash_screen_finished")
 
