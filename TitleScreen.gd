@@ -3,19 +3,35 @@ extends Node2D
 signal begin_game
 
 var going_to_game = false
+
+const SPLASH_SCREENS = [
+	"Splash-LD46",
+	"Splash-Avatar",
+	"Splash-Title",
+]
+var splash_screen_index = 0
+
+var current_splash_screen : SplashScreen
+
 func _ready():
-	$AnimationPlayer.play("LD46")
+	play_current_splash_screen()
+
+func play_current_splash_screen():
+	if splash_screen_index >= SPLASH_SCREENS.size():
+		emit_signal("begin_game")
+		return
+	current_splash_screen = get_node(SPLASH_SCREENS[splash_screen_index])
+	current_splash_screen.begin()
+	current_splash_screen.connect("finished", self, "_on_splash_screen_finished")
+
+func play_next_splash_screen():
+	splash_screen_index += 1
+	play_current_splash_screen()
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept") && !going_to_game:
-		going_to_game = true
-		emit_signal("begin_game")
-	
-func _on_AnimationPlayer_animation_finished(anim_name):
-	match anim_name:
-		"LD46":
-			$AnimationPlayer.play("SplashScreens")
-		"SplashScreens":
-			$AnimationPlayer.play("Logo")
-		"Logo":
-			$AnimationPlayer.play("Dance")
+	if Input.is_action_just_pressed("ui_accept"):
+		if !current_splash_screen.is_fading_out:
+			current_splash_screen.fade_out()
+
+func _on_splash_screen_finished():
+	play_next_splash_screen()

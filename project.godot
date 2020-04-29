@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://Level.gd"
+}, {
+"base": "Node2D",
+"class": "SplashScreen",
+"language": "GDScript",
+"path": "res://Splash Screens/SplashScreen.gd"
 } ]
 _global_script_class_icons={
-"Level": ""
+"Level": "",
+"SplashScreen": ""
 }
 
 [application]
