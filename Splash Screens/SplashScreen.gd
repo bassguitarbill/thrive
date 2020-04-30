@@ -14,7 +14,6 @@ func _ready():
 	player.connect("animation_finished", self, "on_animation_completed")
 
 func begin():
-	print(get_name(), ' begin')
 	player.play("begin")
 	
 func fade_out():
